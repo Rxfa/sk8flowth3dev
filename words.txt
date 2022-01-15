@@ -1,0 +1,12 @@
+monkey
+admin
+index
+login
+password123
+secret
+mysql
+web
+server
+users
+2100
+2048
