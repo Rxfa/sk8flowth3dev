@@ -33,7 +33,7 @@ def siteFuzz(url_in,dir_list):
         elif(fuzz.status_code in (300,399)):
             notedDirs.append(f"{fuzz.status_code} : {dir} ")
         else: pass
-    if(fuzzedDirs): dirFuzz(url_in,fuzzedDirs,dir_list)
+    if(fuzzedDirs): dirFuzz(f"{url_in}",fuzzedDirs,dir_list)
 
 #function for fuzzing found directories
 def dirFuzz(url_in,dirs,filelist,ex = exts):
@@ -47,28 +47,28 @@ def dirFuzz(url_in,dirs,filelist,ex = exts):
                 fuzz = requests.get(f"{dir}/{file}{ext}")
                 if(fuzz.status_code == 200):
                     fuzzedFiles.append(f"{dir}/{file}{ext}")
-                    testread.append(str(fuzz.text))
-
-
-
+                    testread.append(f"{dir}/{file}{ext}")
 
 
 # function for reading the html of a fuzzed page
+# regex will likely be changed to a wordlist, unsure yet
 def readPages(listin):
     for l in listin:
-        #dd = re.findall("secret|secrets|login|username|",str(l))
-        #if len(dd) > 0: print('found keyword \n')
-        print(l)
+        dd = re.findall("secret|secrets|login|username|",str(l)) 
+        if len(dd) > 0: print('found keyword in file ' + l)
 
 
+# start of main functions
+host = sys.argv[1]
 
+#fuzz http if  port 80 was found in nmap scan, logic coming for that
+if(str(host).__contains__("http://")): siteFuzz(host,wordlist)
+else: siteFuzz(f"http://{host}",wordlist)
 
-#test my http server is up
-#url = "http://localhost:8000"
-#x = requests.get(url)
-#print(x.text)
-siteFuzz("http://localhost:8000",wordlist)
-print(fuzzedDirs)
-print(fuzzedFiles)
-print(testread)
+#make sure you can locate interesting files/pages 
 readPages(testread)
+
+
+# InvalidSchema exception, if you do not have "http://" in sys.argv[1]
+# for now the __contains__ is ok
+# do not forget to work in try excepts for some input handling
