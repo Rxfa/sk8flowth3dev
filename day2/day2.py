@@ -1,4 +1,4 @@
-# today is day 2
+# today is day 3
 # wanted to automate some of my tasks by writing things tools do
 #combine some of the knowledge i have with what i might want to do with it, ex logging things i find during a CTF
 # the tasks in question are decisions on how to enumerate a host
@@ -57,6 +57,16 @@ def readPages(listin):
         dd = re.findall("secret|secrets|login|username|",str(l)) 
         if len(dd) > 0: print('found keyword in file ' + l)
 
+def downloadData(files):
+
+    for h in files:
+        data = requests.get(h)
+        filename = str(h[21:])
+        filename = filename.replace("/", "_")
+        d = open(f"files/{filename}","a")
+        d.write(data.text)
+        d.close()
+
 
 # start of main functions
 host = sys.argv[1]
@@ -65,10 +75,7 @@ host = sys.argv[1]
 if(str(host).__contains__("http://")): siteFuzz(host,wordlist)
 else: siteFuzz(f"http://{host}",wordlist)
 
-#make sure you can locate interesting files/pages 
-readPages(testread)
-
-
+downloadData(fuzzedFiles)
 # InvalidSchema exception, if you do not have "http://" in sys.argv[1]
 # for now the __contains__ is ok
 # do not forget to work in try excepts for some input handling
