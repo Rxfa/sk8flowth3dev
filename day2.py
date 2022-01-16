@@ -12,11 +12,14 @@
 # index.html file with a Js file
 
 # imports needed if any
-import requests,re
+import requests,re,os,sys
 
 fuzzedDirs = []
 fuzzedFiles = []
+#test for reading the content of files
+testread = []
 notedDirs = []
+exts = ['.js','.html','.php','.py','.img']
 
 f = open("words.txt").read() 
 wordlist = f.splitlines()
@@ -33,20 +36,30 @@ def siteFuzz(url_in,dir_list):
     if(fuzzedDirs): dirFuzz(url_in,fuzzedDirs,dir_list)
 
 #function for fuzzing found directories
-def dirFuzz(url_in,dirs,filelist):
-    ext = '.js' # one extension for now, adding the rest in later
-    for file in filelist:
-            fuzz = requests.get(f"{url_in}/{file}{ext}")
-            if(fuzz.status_code == 200):
-                fuzzedFiles.append(f"{url_in}/{file}{ext}")
-    for dir in dirs:
+def dirFuzz(url_in,dirs,filelist,ex = exts):
+    for ext in ex:
         for file in filelist:
-            fuzz = requests.get(f"{dir}/{file}{ext}")
-            if(fuzz.status_code == 200):
-                fuzzedFiles.append(f"{dir}/{file}{ext}")
+                fuzz = requests.get(f"{url_in}/{file}{ext}")
+                if(fuzz.status_code == 200):
+                    fuzzedFiles.append(f"{url_in}/{file}{ext}")
+        for dir in dirs:
+            for file in filelist:
+                fuzz = requests.get(f"{dir}/{file}{ext}")
+                if(fuzz.status_code == 200):
+                    fuzzedFiles.append(f"{dir}/{file}{ext}")
+                    testread.append(str(fuzz.text))
+
+
+
 
 
 # function for reading the html of a fuzzed page
+def readPages(listin):
+    for l in listin:
+        #dd = re.findall("secret|secrets|login|username|",str(l))
+        #if len(dd) > 0: print('found keyword \n')
+        print(l)
+
 
 
 
@@ -56,5 +69,6 @@ def dirFuzz(url_in,dirs,filelist):
 #print(x.text)
 siteFuzz("http://localhost:8000",wordlist)
 print(fuzzedDirs)
-print(notedDirs)
 print(fuzzedFiles)
+print(testread)
+readPages(testread)
