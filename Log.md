@@ -19,3 +19,8 @@ Todays goal was to work with some python in addition to continuing my Responsive
 The hour i spent today was for a project targeted at fuzzing sites and doing something with the data. I set up a simple folder with some things to find to test it out.
 I had an idea awhlie ago to start using python the way others do, for really useful things. I spent today working on my version of a website fuzzer.
 Day2.py is the project i will keep improving upon and using what i learn to make it better. Python for Pentesters concepts gave me a few ideas.
+
+R1D3
+
+successfully worked out some kinks in my python project
+Responsive Web Design Cert - CSS (23/44)
