@@ -1,6 +1,6 @@
 
 # imports needed if any
-import requests,re,os,socket
+import requests,re,socket
 
 fuzzedDirs = []
 fuzzedFiles = []
