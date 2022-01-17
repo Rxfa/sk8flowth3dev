@@ -23,4 +23,13 @@ Day2.py is the project i will keep improving upon and using what i learn to make
 R1D3
 
 successfully worked out some kinks in my python project
+
 Responsive Web Design Cert - CSS (23/44)
+
+
+
+R1D4
+
+
+I finished the CSS part of the Responsive Web Design path. Definitly learned alot. My python is coming along. I studied some threading then spent my day working it into the port scanner. ended up moving just a few things around and WOW. I am beyond excited to be making progress little by little.
+

@@ -5,14 +5,8 @@
 #   the information gathered is compiled by some bash scripts i use 
 #   to filter output like IPs, MACs, services
 
-# lets start this hour !!!!
-
-# I set up a simple http server in a foler with some static files to practice with
-# python3 -m http.server 
-# index.html file with a Js file
-
-#importts
-
+#imports
+import sys
 from pocs import *
 
 # start of main functions
@@ -37,8 +31,8 @@ for port in portz:
     response = probe_port(host, int(port)) 
     if response == 0: 
         open_ports.append(port)
-#fuzz http if  port 80 was found in nmap scan, logic coming for that
 
+#fuzz http if  port 80 was found in nmap scan
 if(80 in open_ports):
     siteFuzz(f"http://{host}",wordlist)
 print(fuzzedFiles)
