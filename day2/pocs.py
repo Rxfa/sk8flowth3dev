@@ -1,6 +1,6 @@
 
 # imports needed if any
-import requests,re,os,sys
+import requests,re,os,sys,socket
 
 fuzzedDirs = []
 fuzzedFiles = []
@@ -45,12 +45,26 @@ def readPages(listin):
         dd = re.findall("secret|secrets|login|username|",str(l)) 
         if len(dd) > 0: print('found keyword in file ' + l)
 
-def downloadData(files):
+def downloadData(files,offset):
 
     for h in files:
         data = requests.get(h)
-        filename = str(h[21:])
+        filename = str(h[offset:])
         filename = filename.replace("/", "_")
+        filename = filename.replace(".", "_")
+        filename = filename.replace(":", "_")
         d = open(f"files/{filename}","a")
         d.write(data.text)
         d.close()
+
+def probe_port(ip, port, result = 1): 
+  try: 
+    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM) 
+    sock.settimeout(0.5) 
+    r = sock.connect_ex((ip, port))   
+    if r == 0: 
+      result = r 
+    sock.close() 
+  except Exception as e: 
+    pass 
+  return result
