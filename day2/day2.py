@@ -5,19 +5,8 @@
 #   the information gathered is compiled by some bash scripts i use 
 #   to filter output like IPs, MACs, services
 
-<<<<<<< Updated upstream
 #imports
 import sys
-=======
-# lets start this hour !!!!
-
-# I set up a simple http server in a foler with some static files to practice with
-# python3 -m http.server 
-# index.html file with a Js file
-
-#imports
-
->>>>>>> Stashed changes
 from pocs import *
 from threading import *
 
