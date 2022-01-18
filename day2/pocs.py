@@ -1,16 +1,20 @@
 
 # imports needed if any
 import requests,re,socket
+import threading,sys,time,socket
+from queue import Queue
 
 fuzzedDirs = []
 fuzzedFiles = []
-#test for reading the content of files
-testread = []
+open_ports=[]
+none=[]
 notedDirs = []
 exts = ['.js','.html','.php','.py','.img']
 
 f = open("words.txt").read() 
 wordlist = f.splitlines()
+
+print_lock = threading.Lock()
 
 # fuction for fuzzing a site and dropping the matches in an array, also based on some cases, it will kick off another function
 def siteFuzz(url_in,dir_list):
@@ -35,7 +39,6 @@ def dirFuzz(url_in,dirs,filelist,ex = exts):
                 fuzz = requests.get(f"{dir}/{file}{ext}")
                 if(fuzz.status_code == 200):
                     fuzzedFiles.append(f"{dir}/{file}{ext}")
-                    testread.append(f"{dir}/{file}{ext}")
 
 
 # function for reading the html of a fuzzed page
@@ -57,15 +60,20 @@ def downloadData(files,offset):
         d.write(data.text)
         d.close()
 
-def probe_port(ip, port, result = 1): 
-  try: 
-    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM) 
-    sock.settimeout(0.5) 
-    r = sock.connect_ex((ip, port))   
-    if r == 0: 
-      result = r 
-    sock.close() 
-  except Exception as e: 
-    pass 
-  return result
 
+
+def portscan(port,host):
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.settimeout(0.5)
+    try:
+        con = s.connect((host, port))
+        with print_lock:
+            #print('port is open', port)
+            open_ports.append(port)
+        con.close()
+    except:
+        #print('port is close', port)
+        none.append(port)
+  
+
+  
