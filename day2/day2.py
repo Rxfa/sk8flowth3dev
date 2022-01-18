@@ -60,9 +60,13 @@ q.join()
 print('scan done')
 
 #fuzz http if  port 80 was found in nmap scan, logic coming for that
-if(80 in open_ports):
-    print('port 80 found, fuzzing. . .')
-    siteFuzz(f"http://{host}",wordlist)
+for u in open_ports:
+    if u in serv: 
+        print(f'likely service found on port {u} is {serv[u]}')
+        if(u == 80): siteFuzz(f"http://{host}",wordlist)
+
+
+
 print(fuzzedFiles)
 downloadData(fuzzedFiles,offset)
 

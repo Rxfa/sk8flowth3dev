@@ -74,6 +74,12 @@ def portscan(port,host):
     except:
         #print('port is close', port)
         none.append(port)
-  
+
+serv = {
+
+  21:"ftp",
+  22:"ssh",
+  80:"http"
+  }
 
   
