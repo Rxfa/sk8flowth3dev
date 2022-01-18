@@ -18,7 +18,7 @@ def siteFuzz(url_in,dir_list):
         fuzz = requests.get(f"{url_in}/{dir}")
         if(fuzz.status_code == 200):
             fuzzedDirs.append(f"{url_in}/{dir}")
-        elif(fuzz.status_code in (300,399)):
+        elif(fuzz.status_code in range(300,399)):
             notedDirs.append(f"{fuzz.status_code} : {dir} ")
         else: pass
     if(fuzzedDirs): dirFuzz(f"{url_in}",fuzzedDirs,dir_list)
@@ -68,3 +68,4 @@ def probe_port(ip, port, result = 1):
   except Exception as e: 
     pass 
   return result
+
