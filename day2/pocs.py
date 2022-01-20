@@ -79,7 +79,11 @@ serv = {
 
   21:"ftp",
   22:"ssh",
-  80:"http"
+  80:"http",
+  23:"telnet",
+  443:"https",
+  
+
   }
 
   

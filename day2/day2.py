@@ -65,9 +65,7 @@ for u in open_ports:
         print(f'likely service found on port {u} is {serv[u]}')
         if(u == 80): siteFuzz(f"http://{host}",wordlist)
 
-
-
-print(fuzzedFiles)
+#print(fuzzedFiles)
 downloadData(fuzzedFiles,offset)
 
 # InvalidSchema exception, if you do not have "http://" in sys.argv[1]
