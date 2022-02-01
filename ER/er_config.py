@@ -1,3 +1,4 @@
+from pyexpat import EXPAT_VERSION
 import random,time
 
 class ER:
@@ -10,104 +11,116 @@ class ER:
         EXPRESS_RACK.THML_CNTL = 0
         EXPRESS_RACK.WD_Timer = 0
         EXPRESS_RACK.pwr = pwr
-
         EXPRESS_RACK.RIC = {
-            'Powered': 0,
-            'counter': 0,
-            'AuxClosed': 0,
+            'powered':0,
+            'auxbit':0,
+            'subsetid': 'erSUBSETID',
+            'counter': EXPRESS_RACK.HS_count,
             'MCC':0,
             'SERC':0,
             'S1553':0,
             'HRLC':0,
             'fanSpeed': RIC_AAA
-        }
+            }
 
         EXPRESS_RACK.PEHG = {
-            'Powered': 0,
+            'powered': 0,
             'dataRate_MB': 4
         }
 
         EXPRESS_RACK.AAA = {
-            'Powered': 0,
-            'setpoint': 0,
-            'speed': 0
-        }
+            'powered':0,
+            'speed':0,
+            'setpoint': 0
+            }
 
-        
+        EXPRESS_RACK.THML_CNTL = 0
+        EXPRESS_RACK.WD_Timer = 0
+
         EXPRESS_RACK.AFC_1 = {
-            'Powered': 0,
             'setpoint': 0,
-            'flow': 0
+            'flow':0
         }
         EXPRESS_RACK.AFC_2 = {
-            'Powered': 0,
             'setpoint': 0,
             'flow':0
         }
         EXPRESS_RACK.AFC_3 = {
-            'Powered': 0,
             'setpoint': 0,
             'flow':0
         }
 
-    def er_afc1_gen(EXPRESS_RACK):
+        EXPRESS_RACK.FLOW = {
+            'powered':0,
+            'flow':0
+        }
+
+    def er_aaaspeed_gen(EXPRESS_RACK):
         while True:
             gen = int(random.randint(23000,40000)*1.2)
-            EXPRESS_RACK.AFC_1['speed'] = gen
-            time.sleep(0.5)
-            return EXPRESS_RACK.AFC_1['speed']
+            EXPRESS_RACK.AAA['speed'] = gen
+            time.sleep(1)
+            return EXPRESS_RACK.AAA['speed']
 
-    def er_afc1_speed(EXPRESS_RACK):
+    def er_aaaspeed(EXPRESS_RACK):
         while True:
-            EXPRESS_RACK.er_afc1_gen()
+            EXPRESS_RACK.er_aaaspeed_gen()
 
-    def er_afc2_gen(EXPRESS_RACK):
+    def er_afc1speed_gen(EXPRESS_RACK):
         while True:
-            gen = int(random.randint(20,40)*1.1)
-            EXPRESS_RACK.AFC_2['speed'] = gen
-            time.sleep(0.5)
-            return EXPRESS_RACK.AFC_2['speed']
+            gen = int(random.randint(30,40)*1.2)
+            EXPRESS_RACK.AFC_1['flow'] = gen
+            time.sleep(1)
+            return EXPRESS_RACK.AFC_1['flow']
+
+    def er_afc1speed(EXPRESS_RACK):
+        while True:
+            EXPRESS_RACK.er_afc1speed_gen()
+
+    def er_afc2speed_gen(EXPRESS_RACK):
+        while True:
+            gen = int(random.randint(20,35)*1.2)
+            EXPRESS_RACK.AFC_2['flow'] = gen
+            time.sleep(1)
+            return EXPRESS_RACK.AFC_2['flow']
+
+    def er_afc2speed(EXPRESS_RACK):
+        while True:
+            EXPRESS_RACK.er_afc2speed_gen()
         
-    def er_afc2_speed(EXPRESS_RACK):
+    def er_afc3speed_gen(EXPRESS_RACK):
         while True:
-            EXPRESS_RACK.er_afc2_gen()
+            gen = int(random.randint(20,35)*1.2)
+            EXPRESS_RACK.AFC_3['flow'] = gen
+            time.sleep(1)
+            return EXPRESS_RACK.AFC_3['flow']
 
-    # HS incrementor 
+    def er_afc3speed(EXPRESS_RACK):
+        while True:
+            EXPRESS_RACK.er_afc3speed_gen()
+        
+
     def add_HS(EXPRESS_RACK):
         EXPRESS_RACK.HS_count = EXPRESS_RACK.HS_count + 1
         return EXPRESS_RACK.HS_count
 
-    # AAA speed simulation
-    def er_AAAspeed_gen(EXPRESS_RACK):
-        #mode = EXPRESS_RACK.AAA['fanSpeed']
-            while True:
-                gen = int(random.randint(23000,27000)*1.2)
-                EXPRESS_RACK.AAA['speed'] = gen
-                time.sleep(0.5)
-                return EXPRESS_RACK.AAA['speed']
-   
-   # AAA speed constant random number
-    def erAAAspeed(EXPRESS_RACK):
-        while True:
-            EXPRESS_RACK.er_AAAspeed_gen()
-
-        # currrent rack stats
     def stats(EXPRESS_RACK):
         #print(f"{EXPRESS_RACK.rack_id}\n")
         EXPRESS_RACK.currenths.append(EXPRESS_RACK.RIC)
         print(EXPRESS_RACK.currenths)
-        
+
+
     def SSPCM_Init(EXPRESS_RACK):
-        if EXPRESS_RACK.pwr == 1:
-            EXPRESS_RACK.RIC['Powered'] == 1
-            EXPRESS_RACK.RIC['AuxClosed'] == 0
-            print('MAIN no AUX')
-        if EXPRESS_RACK.pwr == 2:
-            EXPRESS_RACK.RIC['Powered'] == 1
-            EXPRESS_RACK.RIC['AuxClosed'] == 1
-            print('MAIN and AUX')
-        EXPRESS_RACK.PEHG['Powered'] == 1
-        EXPRESS_RACK.AAA['Powered'] == 1
-        EXPRESS_RACK.THML_CNTL = 1
-        return EXPRESS_RACK.pwr,EXPRESS_RACK.RIC['Powered'],EXPRESS_RACK.AAA['Powered']
-        print('RACK STARTED..')
+        EXPRESS_RACK.AAA['powered'] =1
+        EXPRESS_RACK.PEHG['powered'] = 1
+        EXPRESS_RACK.RIC['powered'] = 1
+
+    def rackHS(EXPRESS_RACK):
+        lineup = []
+        lineup.append(EXPRESS_RACK.rack_id)
+        lineup.append(EXPRESS_RACK.HS_count)
+        lineup.append(EXPRESS_RACK.AAA['speed'])
+        lineup.append((int(EXPRESS_RACK.AFC_1['flow'])+int(EXPRESS_RACK.AFC_2['flow'])+int(EXPRESS_RACK.AFC_3['flow'])))
+        #print(lineup)
+        return lineup
+
