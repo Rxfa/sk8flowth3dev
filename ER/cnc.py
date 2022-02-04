@@ -17,6 +17,7 @@ try:
         try:
             data = z.recv(1024)
         except: print('something went wrong')
+        break
         if data.decode().__contains__('activated'):
             step = data.decode()
             print(f"{step}")
@@ -26,8 +27,8 @@ try:
             print('ready for commands\n')
             z.send('ready'.encode())
         elif data.decode() == 'exec':
-            #nxt = input('next step:\n')
-            z.send('exec'.encode())
+            nxt = input('next step:\n')
+            z.send(nxt.encode())
         else:
             print(data.decode())
             nxt2 = input('next step for moving:\n')

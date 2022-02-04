@@ -104,6 +104,10 @@ try:
             print('ready to command')
             time.sleep(1)
             c.send('exec'.encode())
+        elif data.decode().__contains__('activate'):
+            print(f"activating {data.decode()[-3:]}")
+            time.sleep(1)
+            c.send('exec'.encode())
         else: 
             print(data.decode())
             time.sleep(1);print('. . .')
