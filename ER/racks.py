@@ -1,4 +1,4 @@
-import time,os
+import time,os,socket
 from er1 import *
 from er2 import *
 from er3 import *
@@ -7,6 +7,7 @@ from er4 import *
 from queue import Queue
 from threading import Thread
 
+timeout = 0
 def start_ER_RACK(q,rackmode):
     test11 = Thread(target=rackmode,args=(q,))
     test11.start()
@@ -83,6 +84,38 @@ def ERRIC(idin,ricin):
         er2afc2_.start()
 
 
-ERRIC(ER1.rack_id,ER1.RIC['powered'])
-ERRIC(ER2.rack_id,ER2.RIC['powered'])
+HOST = '127.0.0.1'
+PORT = 3333
+
+c = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+c.connect((HOST, PORT))
+c.send('keepalive'.encode())
+# Receive data
+
+try:
+    while True:
+        try:
+            data = c.recv(1024)
+        except: print('something went wrong')
+        if data.decode() == 'ready':
+            print('ready to command')
+            c.send('exec'.encode())
+        elif data.decode() == 'exec':
+            print('ready to command')
+            time.sleep(1)
+            c.send('exec'.encode())
+        else: 
+            print(data.decode())
+            time.sleep(1);print('. . .')
+            timeout += 1
+            c.send('exec')
+            if timeout == 28:
+                print('server about to timeout')
+                time.sleep(2)
+except: KeyboardInterrupt: print('canceled . . . ')
+
+
+#ERRIC(ER1.rack_id,ER1.RIC['powered'])
+#ERRIC(ER2.rack_id,ER2.RIC['powered'])
+
 

@@ -81,16 +81,8 @@ class ER:
             'lockers':['a1','b1','c1','d1','e1','a2','b2','c2','d2','e2']
             }
         EXPRESS_RACK.PAYLOADS = {
-            EXPRESS_RACK.LOCKERS[0]:'',
-            EXPRESS_RACK.LOCKERS[1]:'',
-            EXPRESS_RACK.LOCKERS[2]:'',
-            EXPRESS_RACK.LOCKERS[3]:'',
-            EXPRESS_RACK.LOCKERS[4]:'',
-            EXPRESS_RACK.LOCKERS[5]:'',
-            EXPRESS_RACK.LOCKERS[6]:'',
-            EXPRESS_RACK.LOCKERS[7]:'',
-            EXPRESS_RACK.LOCKERS[7]:'',
-            EXPRESS_RACK.LOCKERS[9]:'',
+            EXPRESS_RACK.LOCKERS['lockers'][0]:'PL1',
+            EXPRESS_RACK.LOCKERS['lockers'][1]:'PL2'
             }
 
         EXPRESS_RACK.PLDCMD = {
