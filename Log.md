@@ -55,7 +55,9 @@ I finished the CSS part of the Responsive Web Design path. Definitly learned alo
 
 **Today's Progress**: Worked on the web design Cert. about halfway through the second CSS portion. I worked on some C++ today, threading and pointers. i also have an idea for a project, ticket system. lining it up to start in my other repo, themadhatter.
 
-### R1D
+### R1D21
 
-**Today's Progress**: Worked on the web design Cert. about halfway through the second CSS portion. I worked on some C++ today, threading and pointers. i also have an idea for a project, ticket system. lining it up to start in my other repo, themadhatter.
+**Today's Progress**: not so goof at keeping up. Some updates: fuzzing script is under reveiw for some more use possibly. Worked in some practice with threading, started back working with some sockets to see if i can make something cool. Currently working to bridge the gap on what language is best for the task ( in general python vs c++). all for now, but wow, its only been a few weeks and i already have more projects with use cases. i started looking at docker to make some website projects that i can play with.
+
+
     
