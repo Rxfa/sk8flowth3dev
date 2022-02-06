@@ -59,6 +59,7 @@ def er1aaaspeedmon(in_q):
     while True:
         # Get some data
         data1 = in_q.get()
+        ER1.test_AAA()
         #if int(data1) == 3:
             #print(f"{ER1.rack_id} value is 3")
         # Process the data
@@ -127,6 +128,12 @@ er1afc2_ = Thread(target=startER1afc2)
 
 
 er1_ = Thread(target=showER1)
+
+er1_.start()
+er1speed1.start()
+er1HS.start()
+er1afc1_.start()
+er1afc2_.start()
 
 
 

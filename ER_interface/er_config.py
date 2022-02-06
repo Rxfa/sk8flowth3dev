@@ -153,6 +153,7 @@ class ER:
         EXPRESS_RACK.AAA['powered'] =1
         EXPRESS_RACK.PEHG['powered'] = 1
         EXPRESS_RACK.RIC['powered'] = 1
+        EXPRESS_RACK.FLOW['powered'] = 1
 
     def rackHS(EXPRESS_RACK):
         lineup = []
