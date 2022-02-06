@@ -4,23 +4,33 @@ from racks import *
 #from loading_bar import *
 #from test import *
 
+def drawCir(xpos,ypos,r):
+    drawcir = Circle(Point(xpos,ypos),r)
+    return drawcir
 
+def drawText(xpos,ypos,txtin):
+    drawtxt = Text(Point(xpos,ypos),txtin)
+    return drawtxt
+
+def drawRec(x1,y1,x2,y2):
+    drawrect = Rectangle(Point(x1,y1),Point(x2,y2))
+    return drawrect
 
 def main():
-    window = GraphWin("Window Name",1000,800) # window name and sizes
+    window = GraphWin("HS Monitor",1000,800) # window name and sizes
     window.setBackground('black') # bg color
 
-    heading = Rectangle(Point(0,0),Point(150,100))
+    heading = drawRec(0,0,150,100)
     heading.setFill('white')
     heading.setOutline('red')
     heading.draw(window)
 
-    ER1DisplayBox = Rectangle(Point(200,20),Point(400,300))
+    ER1DisplayBox = drawRec(200,20,400,300)
     ER1DisplayBox.setFill('white')
     ER1DisplayBox.setOutline('yellow')
     ER1DisplayBox.draw(window)
 
-    er1HS_stream = Text(Point(250,30),ER1.rackHS()[0])
+    er1HS_stream = drawText(250,30,ER1.rackHS()[0])
     er1HS_stream.setTextColor('green')
     er1HS_stream.setSize(9)
     er1HS_stream.draw(window)
