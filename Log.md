@@ -59,5 +59,10 @@ I finished the CSS part of the Responsive Web Design path. Definitly learned alo
 
 **Today's Progress**: not so goof at keeping up. Some updates: fuzzing script is under reveiw for some more use possibly. Worked in some practice with threading, started back working with some sockets to see if i can make something cool. Currently working to bridge the gap on what language is best for the task ( in general python vs c++). all for now, but wow, its only been a few weeks and i already have more projects with use cases. i started looking at docker to make some website projects that i can play with.
 
+### R1D22
 
-    
+**Today's Progress**: working python projects and their kinks. i have also stated using docker to work with my websites i want to test and learning some MySQL to go with the python.
+
+### R1D23
+
+**Today's Progress**: working in sonme basic display capabilities. i need to work them into functions, testing that out in my POCs
