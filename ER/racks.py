@@ -112,10 +112,7 @@ try:
             print(data.decode())
             time.sleep(1);print('. . .')
             timeout += 1
-            c.send('exec')
-            if timeout == 28:
-                print('server about to timeout')
-                time.sleep(2)
+            c.send('exec'.encode())
 except: KeyboardInterrupt: print('canceled . . . ')
 
 

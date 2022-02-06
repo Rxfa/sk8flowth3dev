@@ -17,7 +17,6 @@ try:
         try:
             data = z.recv(1024)
         except: print('something went wrong')
-        break
         if data.decode().__contains__('activated'):
             step = data.decode()
             print(f"{step}")

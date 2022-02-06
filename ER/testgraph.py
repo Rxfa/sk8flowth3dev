@@ -1,6 +1,6 @@
 from graphics import *
-from loading_bar import *
-from test import *
+from racks import *
+
 
 def main():
     window = GraphWin("HS Monitor",1000,1000) # window name and sizes
