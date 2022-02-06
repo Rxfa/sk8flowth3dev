@@ -161,11 +161,11 @@ __version__ = "5.0"
 #     Added Entry boxes.
 
 import time, os, sys
-
-try:  # import as appropriate for 2.x vs. 3.x
-   import tkinter as tk
-except:
-   import Tkinter as tk
+import tkinter as tk
+#try:  # import as appropriate for 2.x vs. 3.x
+ #  import tkinter as tk
+#except:
+ #  import Tkinter as tk
 
 
 ##########################################################################
