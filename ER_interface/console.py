@@ -55,7 +55,7 @@ def main():
     #heading box
     drawRec(10,10,150,100,'white','gold',window)
     #heading text
-    drawText(70,30,'Header Text','red',12,window)
+    drawText(70,30,'HS Monitor','black',12,window)
     #draw line to seperate panel
     drawLine(147,100,147,600,'white',5,window)
 
@@ -84,7 +84,22 @@ def main():
      # ER1 DisplayBox
     drawRec(200,20,400,300,'white','gold',window)
     # ER1 Name
-    drawText(225,50,' - - ','black',9,window)
+    drawText(225,30,ER1.rack_id,'black',9,window)
+
+     # ER1 Main Pwr Box
+    er1mainbox = drawRec2(200,40,300,60,'white','black')
+    er1mainbox.draw(window)
+    # ER1 Display Main RPC
+    er1mainpwr = drawText2(250,50,'MAIN','black',9)
+    er1mainpwr.draw(window)
+
+     # ER1 Safing Pwr Box
+    er1auxbox = drawRec2(300,40,400,60,'white','black')
+    er1auxbox.draw(window)
+    # ER1 Display Safing RPC
+    er1auxpwr = drawText2(350,50,'AUX','black',9)
+    er1auxpwr.draw(window)
+
 
     # ER1 Display HS count
     er1HSinbox = drawText2(240,80,'HS Count:','black',9)
@@ -115,6 +130,46 @@ def main():
     # ER2 count
     er2HS = drawText2(90,160,'0 N','black',9)
     er2HS.draw(window)
+     # ER2 DisplayBox
+    drawRec(410,20,610,300,'white','gold',window)
+    # ER2 Name
+    drawText(425,30,ER2.rack_id,'black',9,window)
+
+     # ER2 Main Pwr Box
+    er1mainbox = drawRec2(410,40,510,60,'white','black')
+    er1mainbox.draw(window)
+    # ER1 Display Main RPC
+    er1mainpwr = drawText2(450,50,'MAIN','black',9)
+    er1mainpwr.draw(window)
+
+     # ER1 Safing Pwr Box
+    er1auxbox = drawRec2(510,40,610,60,'white','black')
+    er1auxbox.draw(window)
+    # ER1 Display Safing RPC
+    er1auxpwr = drawText2(550,50,'AUX','black',9)
+    er1auxpwr.draw(window)
+
+    # ER2 Display HS count
+    er2HSinbox = drawText2(440,80,'HS Count:','black',9)
+    er2HSinbox.draw(window)
+
+    # ER2 Display AAA Pwr
+    drawText(430,100,'AAA ','black',9,window)
+    # ER2 AAA Pwr light
+    er2aaapwr = drawCir2(460,100,7,'red')
+    er2aaapwr.draw(window)
+    # ER2 AAA Speed
+    er2aaaspeed = drawText2(490,100,'0 N','black',9)
+    er2aaaspeed.draw(window)
+
+    # ER2 Display RFCA Flow
+    drawText(430,120,'RFCA ','black',9,window)
+    # ER2 RFCA Pwr light
+    er2flowcir = drawCir2(460,120,7,'red')
+    er2flowcir.draw(window)
+    # ER2 RFCA Flow
+    er2flow = drawText2(490,120,'0 N','black',9)
+    er2flow.draw(window)
     
 ################
 ####### ER3
@@ -143,27 +198,56 @@ def main():
         er3HS.setText(ER3.HS_count)
         er4HS.setText(ER4.HS_count)
         #er1HS_stream.setText(ER1.rackHS())
+
+        
+            
     
+       
         if int(ER1.AAA['powered']) == 0:  
             
             er1aaapwr.setFill('red')
-            #er1HS_stream_aaa.setText('N')
+            er1aaaspeed.setText('0 N')
             ER1.SSPCM_Init()
             time.sleep(2)
         else:  
             er1aaapwr.setFill('green')
+            er1aaaspeed.setText(ER1.rackHS()[2])
             #ER1.AAA['powered'] = 0
             #er1HS_stream_aaa.setText(f" {ER1.rackHS()[2]}")
         if int(ER1.FLOW['powered']) == 0:  
             
             er1flowcir.setFill('red')
-            #er1HS_stream_flow.setText('N')
+            er1flow.setText('0 N')
             #ER1.SSPCM_Init()
             #time.sleep(2)
         else:  
             er1flowcir.setFill('green')
             #ER1.AAA['powered'] = 0
-            #er1HS_stream_flow.setText(f" {ER1.rackHS()[3]}")
+            er1flow.setText(f" {ER1.rackHS()[3]}")
+        ########################################
+
+
+        if int(ER2.AAA['powered']) == 0:  
+            
+            er2aaapwr.setFill('red')
+            er2aaaspeed.setText('0 N')
+            ER2.SSPCM_Init()
+            time.sleep(2)
+        else:  
+            er2aaapwr.setFill('green')
+            #ER1.AAA['powered'] = 0
+            er2aaaspeed.setText(f" {ER2.rackHS()[2]}")
+        
+        if int(ER2.FLOW['powered']) == 0:  
+            
+            er2flowcir.setFill('red')
+            er2flow.setText('0 N')
+            #ER1.SSPCM_Init()
+            #time.sleep(2)
+        else:  
+            er2flowcir.setFill('green')
+            #ER1.AAA['powered'] = 0
+            er2flow.setText(f" {ER2.rackHS()[3]}")
 
         
         if int(ER1.HS_count) < 3:
