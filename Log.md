@@ -66,3 +66,10 @@ I finished the CSS part of the Responsive Web Design path. Definitly learned alo
 ### R1D23
 
 **Today's Progress**: working in sonme basic display capabilities. i need to work them into functions, testing that out in my POCs
+
+
+### R1D24
+
+**Today's Progress**: working on tkinter and how to use it with current projects ( if applicable). 
+
+**Thoughts**: This was a task. The challenge was pacing and working piece by piece. It is easy to get excited and amazed with features. Without a use case i find myself just mixing up functions for fun so lately the "use case" is learning. 
