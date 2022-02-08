@@ -3,7 +3,7 @@ from graphics import *
 from racks import *
 #from loading_bar import *
 #from test import *
-from tqdm import tqdm
+#from tqdm import tqdm
 import time
 
 def drawCir(xpos,ypos,r,color,win):

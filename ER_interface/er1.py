@@ -129,11 +129,7 @@ er1afc2_ = Thread(target=startER1afc2)
 
 er1_ = Thread(target=showER1)
 
-er1_.start()
-er1speed1.start()
-er1HS.start()
-er1afc1_.start()
-er1afc2_.start()
+
 
 
 
