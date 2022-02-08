@@ -38,6 +38,22 @@ def eract():
     er1HS.start()
     er1afc1_.start()
     er1afc2_.start()
+# function for progress bar
+def progress():
+    for prog in range(20):
+        inner_win1.update_idletasks()
+        pb1['value'] += 5
+        time.sleep(.092)
+        if pb1['value'] >= 99:
+            er1_.start()
+            er1speed1.start()
+            er1HS.start()
+            er1afc1_.start()
+            er1afc2_.start()
+            time.sleep(1)
+            pb1['value'] = 5
+
+
     
     
 
@@ -46,6 +62,7 @@ def eract():
 main_win = Tk()
 main_win.title("Interface Project Demo")
 main_win.geometry("1000x700")
+
 
 #################################
 # TITLE BOX
@@ -58,7 +75,9 @@ _label.pack() # to make it above main canvas
 # main canvas area for the background
 inner_win1 = Canvas(main_win,height=650,width=950,bg="#000")
 inner_win1.pack()
-#################################
+
+pb1 = Progressbar(main_win,orient=HORIZONTAL,length=100,mode='determinate')
+pb1.pack(expand=True)#################################
 #HS Side area
 #################################
 #function for a rectangle
@@ -91,6 +110,8 @@ tt = inner_win1.create_text(
 
 cmd_ = Button(inner_win1, text="CMD",command=eract)
 cmd_.place(x=25, y=100)
+cmd_2 = Button(inner_win1, text="CMD w/ Status",command=progress)
+cmd_2.place(x=25, y=150)
 
 #################################
 #BOTTOM TEXT AREA
