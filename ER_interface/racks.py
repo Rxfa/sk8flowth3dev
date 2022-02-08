@@ -63,8 +63,8 @@ HOST = '127.0.0.1'
 PORT = 3333
 
 def startup():
-    ERRIC(ER1.rack_id,ER1.RIC['powered'])
-    ERRIC(ER2.rack_id,ER2.RIC['powered'])
+    ERRIC(ER1.rack_id,ER1.RIC['poweredric'])
+    ERRIC(ER2.rack_id,ER2.RIC['poweredric'])
 
 #startup()
 #ERRIC(ER1.rack_id,ER1.RIC['powered'])

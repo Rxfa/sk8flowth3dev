@@ -9,12 +9,13 @@ from er_config import ER
 
 
 
-ER1 = ER("ER1","LABO2","LAB",1,1)
+ER1 = ER("ER1","LABO2","LAB",1,2)
 
 def startER1():
     while True:
         ER1.add_HS()
-        if int(ER1.HS_count) > 5: ER1.HS_count = 0
+        if int(ER1.HS_count) > 60: ER1.HS_count = 0
+        #if int(ER1.HS_count) > 5: ER1.RIC['poweredric'] = "green"
         time.sleep(1)
 
 def startER1afc1():
@@ -114,7 +115,7 @@ def showER1():
 
 
 #print(ER1.AFC_2['speed'])
-time.sleep(1)
+#time.sleep(1)
 q_er1aaa = Queue()
 q_er1HS = Queue()
 q_er1afc1 = Queue()

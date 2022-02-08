@@ -14,7 +14,7 @@ ER4 = ER("ER4","LABO1","LAB",1,1)
 def startER4():
     while True:
         ER4.add_HS()
-        if int(ER4.HS_count) > 5: ER4.HS_count = 0
+        if int(ER4.HS_count) > 60: ER4.HS_count = 0
         time.sleep(1)
 
 def startER4afc1():

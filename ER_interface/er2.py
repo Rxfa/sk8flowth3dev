@@ -14,7 +14,7 @@ ER2 = ER("ER2","LABO1","LAB",1,1)
 def startER2():
     while True:
         ER2.add_HS()
-        if int(ER2.HS_count) > 5: ER2.HS_count = 0
+        if int(ER2.HS_count) > 60: ER2.HS_count = 0
         time.sleep(1)
 
 def startER2afc1():
@@ -112,7 +112,7 @@ def showER2():
 
 
 #print(ER2.AFC_2['speed'])
-time.sleep(1)
+#time.sleep(1)
 q_er2aaa = Queue()
 q_er2HS = Queue()
 q_er2afc1 = Queue()
@@ -125,11 +125,7 @@ er2afc2_ = Thread(target=startER2afc2)
 
 er2_ = Thread(target=showER2)
 
-er2_.start()
-er2speed2.start()
-er2HS.start()
-er2afc1_.start()
-er2afc2_.start()
+
 
 
 
