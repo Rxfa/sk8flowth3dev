@@ -55,7 +55,21 @@ I finished the CSS part of the Responsive Web Design path. Definitly learned alo
 
 **Today's Progress**: Worked on the web design Cert. about halfway through the second CSS portion. I worked on some C++ today, threading and pointers. i also have an idea for a project, ticket system. lining it up to start in my other repo, themadhatter.
 
-### R1D
+### R1D21
 
-**Today's Progress**: Worked on the web design Cert. about halfway through the second CSS portion. I worked on some C++ today, threading and pointers. i also have an idea for a project, ticket system. lining it up to start in my other repo, themadhatter.
-    
+**Today's Progress**: not so goof at keeping up. Some updates: fuzzing script is under reveiw for some more use possibly. Worked in some practice with threading, started back working with some sockets to see if i can make something cool. Currently working to bridge the gap on what language is best for the task ( in general python vs c++). all for now, but wow, its only been a few weeks and i already have more projects with use cases. i started looking at docker to make some website projects that i can play with.
+
+### R1D22
+
+**Today's Progress**: working python projects and their kinks. i have also stated using docker to work with my websites i want to test and learning some MySQL to go with the python.
+
+### R1D23
+
+**Today's Progress**: working in sonme basic display capabilities. i need to work them into functions, testing that out in my POCs
+
+
+### R1D24
+
+**Today's Progress**: working on tkinter and how to use it with current projects ( if applicable). 
+
+**Thoughts**: This was a task. The challenge was pacing and working piece by piece. It is easy to get excited and amazed with features. Without a use case i find myself just mixing up functions for fun so lately the "use case" is learning. 
