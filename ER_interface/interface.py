@@ -100,27 +100,34 @@ def openNewWindow():
     newWindow.title("New Window")
  
     # sets the geometry of toplevel
-    newWindow.geometry("200x200")
+    newWindow.geometry("500x500")
  
     # A Label widget to show in toplevel
     Label(newWindow,
           text ="This is a new window").pack()
     inner_win2 = Canvas(newWindow,height=300,width=300,bg="red")
     inner_win2.pack()
-    testtxt(inner_win2,50,60,10,"white","ER1 H&S : ")
-    testcir(inner_win2,130,70,150,50,"#FFF")
+    la2 = Label(main_win,text="")
+    la2.pack()
 
     e = Entry(inner_win2,width=40)
     e.pack()
+    def clicked():
+                 
+                 if e.get() == "ER1": 
+                     cmd_issued()
+                     myLabel = Label(inner_win2,text=f"CMD SENT: ACTIAVTE {e.get()}")
+                     myLabel2 = Label(tab3can,text=f"CMD SENT: ACTIAVTE {e.get()}")
+                 else: 
+                     myLabel = Label(inner_win2,text=f"CMD : {e.get()}")
+                     myLabel2 = Label(tab3can,text=f"CMD : {e.get()}")
 
-    la1 = Label(inner_win1,text="nnnn")
-
-    cmd_4 = Button(newWindow, text="Test Window CMD",command=clicked(newWindow,la1))
+                 myLabel.pack()
+                 myLabel2.pack()
+    cmd_4 = Button(newWindow, text="Test Window CMD",command=clicked)
     cmd_4.place(x=50, y=50)
 
-def clicked(win,myLabel):
-         myLabel = Label(win,text=e.get())
-         myLabel.pack()    
+        
 
 #def main():
 
@@ -146,16 +153,20 @@ tabs = Notebook(inner_win1)
 
 tab1 = Frame(tabs)
 tab2 = Frame(tabs)
+tab3 = Frame(tabs)
 
 tabs.add(tab1,text="General HS")
 tabs.add(tab2,text="Detailed (in work)")
+tabs.add(tab3,text="Command History (in work)")
 tabs.pack(expand=1,fill="both")
 
 
 tab1can = Canvas(tab1,height=650,width=950,bg="#000")
 tab2can = Canvas(tab2,height=650,width=950,bg="#000")
+tab3can = Canvas(tab3,height=650,width=250,bg="#000")
 tab1can.pack()
 tab2can.pack()
+tab3can.pack()
 
 
 
