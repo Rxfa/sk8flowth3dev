@@ -9,7 +9,7 @@ from er_config import ER
 
 
 
-ER1 = ER("ER1","LABO2","LAB",1,2)
+ER1 = ER("ER1","LABO2","LAB",1,1)
 
 def startER1():
     while True:
