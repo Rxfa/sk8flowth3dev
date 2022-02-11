@@ -28,6 +28,11 @@ def startER1afc2():
         ER1.er_afc2speed_gen()
         time.sleep(1)
 
+def startER1afc3():
+    while True:
+        ER1.er_afc3speed_gen()
+        time.sleep(1)
+
 def er1hs(out_q):
 	while True:
 		# Produce some data
@@ -126,6 +131,7 @@ er1speed1 = Thread(target=ER1.er_aaaspeed)
 er1HS = Thread(target=startER1)
 er1afc1_ = Thread(target=startER1afc1)
 er1afc2_ = Thread(target=startER1afc2)
+er1afc3_ = Thread(target=startER1afc3)
 
 
 er1_ = Thread(target=showER1)

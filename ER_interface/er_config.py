@@ -33,9 +33,6 @@ class ER:
 
         EXPRESS_RACK.RIC = {
             'powered':0,
-            'poweredric':"",
-            'poweredaaa':"",
-            'poweredrfca':"",
             'poweredc':"",
             'auxbit':0,
             'subsetid': 'erSUBSETID',
@@ -49,12 +46,14 @@ class ER:
 
         EXPRESS_RACK.PEHG = {
             'powered': 0,
+            'poweredc':"",
             'auxbit':0,
             'dataRate_MB': 4
         }
 
         EXPRESS_RACK.AAA = {
             'powered':0,
+            'poweredc':"",
             'auxbit':0,
             'speed':0,
             'setpoint': 0
@@ -62,24 +61,28 @@ class ER:
 
         EXPRESS_RACK.AFC_1 = {
             'setpoint': 0,
+            'poweredc':"",
             'auxbit':0,
             'flow':0
         }
 
         EXPRESS_RACK.AFC_2 = {
             'setpoint': 0,
+            'poweredc':"",
             'auxbit':0,
             'flow':0
         }
 
         EXPRESS_RACK.AFC_3 = {
             'setpoint': 0,
+            'poweredc':"",
             'auxbit':0,
             'flow':0
         }
 
         EXPRESS_RACK.FLOW = {
             'powered':0,
+            'poweredc':"",
             'flow':0
         }
 
@@ -100,18 +103,18 @@ class ER:
             while True:
                 gen = int(random.randint(21000,30000)*1.2)
                 EXPRESS_RACK.AAA['speed'] = gen
-                if int(gen) < 32000: EXPRESS_RACK.RIC['poweredaaa'] = "red"
-                else:EXPRESS_RACK.RIC['poweredaaa'] = "green"
+                if int(gen) < 25000: EXPRESS_RACK.AAA['poweredc'] = "red"
+                else:EXPRESS_RACK.AAA['poweredc'] = "green"
                 time.sleep(1)
-                return EXPRESS_RACK.AAA['speed'],EXPRESS_RACK.RIC['poweredaaa']
+                return EXPRESS_RACK.AAA['speed'],EXPRESS_RACK.AAA['poweredc']
         if EXPRESS_RACK.RIC['fanSpeed'] == 2:
             while True:
-                gen = int(random.randint(30000,40000)*1.2)
+                gen = int(random.randint(28000,43000)*1.2)
                 EXPRESS_RACK.AAA['speed'] = gen
-                if int(gen) < 32000: EXPRESS_RACK.RIC['poweredaaa'] = "red"
-                else:EXPRESS_RACK.RIC['poweredaaa'] = "green"
+                if int(gen) < 32000: EXPRESS_RACK.AAA['poweredc'] = "red"
+                else:EXPRESS_RACK.RIC['poweredc'] = "green"
                 time.sleep(1)
-                return EXPRESS_RACK.AAA['speed'],EXPRESS_RACK.RIC['poweredaaa']
+                return EXPRESS_RACK.AAA['speed'],EXPRESS_RACK.AAA['poweredc']
 
 
     def er_aaaspeed(EXPRESS_RACK):
@@ -120,7 +123,7 @@ class ER:
 
     def er_afc1speed_gen(EXPRESS_RACK):
         while True:
-            gen = int(random.randint(30,40)*1.2)
+            gen = int(random.randint(37,40)*1.2)
             EXPRESS_RACK.AFC_1['flow'] = gen
             time.sleep(1)
             return EXPRESS_RACK.AFC_1['flow']
@@ -131,7 +134,7 @@ class ER:
 
     def er_afc2speed_gen(EXPRESS_RACK):
         while True:
-            gen = int(random.randint(20,35)*1.2)
+            gen = int(random.randint(25,30)*1.2)
             EXPRESS_RACK.AFC_2['flow'] = gen
             time.sleep(1)
             return EXPRESS_RACK.AFC_2['flow']
@@ -142,7 +145,7 @@ class ER:
         
     def er_afc3speed_gen(EXPRESS_RACK):
         while True:
-            gen = int(random.randint(20,35)*1.2)
+            gen = int(random.randint(25,30)*1.2)
             EXPRESS_RACK.AFC_3['flow'] = gen
             time.sleep(1)
             return EXPRESS_RACK.AFC_3['flow']
@@ -169,11 +172,12 @@ class ER:
         EXPRESS_RACK.AAA['powered'] =1
         EXPRESS_RACK.PEHG['powered'] = 1
         EXPRESS_RACK.RIC['powered'] = 1
-        EXPRESS_RACK.RIC['poweredric'] = "green"
-        EXPRESS_RACK.RIC['poweredrfca'] = "green"
-        EXPRESS_RACK.RIC['poweredaaa'] = "green"
+        EXPRESS_RACK.RIC['poweredc'] = "green"
+        EXPRESS_RACK.FLOW['poweredc'] = "green"
+        EXPRESS_RACK.AAA['poweredc'] = "green"
+        EXPRESS_RACK.AFC_1['poweredc'] = "green"
         EXPRESS_RACK.FLOW['powered'] = 1
-        return  EXPRESS_RACK.AAA['powered'],EXPRESS_RACK.PEHG['powered'],EXPRESS_RACK.RIC['poweredric'],EXPRESS_RACK.RIC['poweredrfca'],EXPRESS_RACK.RIC['poweredaaa'],EXPRESS_RACK.FLOW['powered'],EXPRESS_RACK.MAIN['poweredc'],EXPRESS_RACK.AUX['poweredc']
+        return  EXPRESS_RACK.AFC_1['poweredc'],EXPRESS_RACK.AAA['powered'],EXPRESS_RACK.AAA['poweredc'],EXPRESS_RACK.PEHG['powered'],EXPRESS_RACK.RIC['poweredc'],EXPRESS_RACK.FLOW['poweredc'],EXPRESS_RACK.FLOW['powered'],EXPRESS_RACK.MAIN['poweredc'],EXPRESS_RACK.AUX['poweredc']
 
     def rackHS(EXPRESS_RACK):
         lineup = []
@@ -181,7 +185,6 @@ class ER:
         lineup.append(EXPRESS_RACK.HS_count)
         lineup.append(EXPRESS_RACK.AAA['speed'])
         lineup.append((int(EXPRESS_RACK.AFC_1['flow'])+int(EXPRESS_RACK.AFC_2['flow'])+int(EXPRESS_RACK.AFC_3['flow'])))
-        lineup.append(EXPRESS_RACK.RIC['poweredric'])
         #print(lineup)
         return lineup
 
