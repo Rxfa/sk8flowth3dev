@@ -80,13 +80,7 @@ def start_data():
 
 # function for progress bar
 def cmd_issued():
-    for prog in range(20):
-        tab1can.update_idletasks()
-        pb1['value'] += 5
-        time.sleep(.1)
-        #if pb1['value'] == 30:
-          
-            #time.sleep(1)
+    start_data()
 
 
 def openNewWindow():
