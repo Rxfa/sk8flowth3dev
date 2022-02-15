@@ -34,9 +34,11 @@ def er1display():
     tab1can.itemconfig(er1aaaspeed_,text=f"{ER1.rackHS()[2]}")
     
     tab1can.itemconfig(tt,text=f"{ER1.rackHS()}")
-    tab1can.itemconfig(er1ric_cir,fill=f"{ER1.RIC['poweredric']}")
-    tab1can.itemconfig(er1aaa_cir,fill=f"{ER1.RIC['poweredaaa']}")
-    tab1can.itemconfig(er1rfca_cir,fill=f"{ER1.RIC['poweredrfca']}")
+    tab1can.itemconfig(er1ric_cir,fill=f"{ER1.RIC['poweredc']}")
+    tab1can.itemconfig(er1aaa_cir,fill=f"{ER1.AAA['poweredc']}")
+    tab1can.itemconfig(er1rfca_cir,fill=f"{ER1.FLOW['poweredc']}")
+    tab1can.itemconfig(er1afc1_cir,fill=f"{ER1.AFC_1['poweredc']}")
+    tab1can.itemconfig(er1afc1flow_,text=f"{ER1.AFC_1['flow']}")
     tab1can.itemconfig(mainlight,fill=f"{ER1.MAIN['poweredc']}")
     tab1can.itemconfig(auxlight,fill=f"{ER1.AUX['poweredc']}")
                    
@@ -63,6 +65,7 @@ def start_data():
             er1HS.start()
             er1afc1_.start()
             er1afc2_.start()
+            er1afc3_.start()
             er2_.start()
             er2speed2.start()
             er2HS.start()
@@ -232,6 +235,24 @@ er1aaaspeed_ = tab1can.create_text(
         fill="black",
         font=f"Times 8 italic bold",
         text="0 N",tags="e1")
+
+# AFC1
+er1afc1_cir = tab1can.create_oval(
+    210, 95, 220,105,
+    fill="white",
+    tags="er1"
+    )
+
+testtxt(tab1can,240,100,8,"black","AFC1")
+er1afc1flow_ = tab1can.create_text(
+        280,100,
+        fill="black",
+        font=f"Times 8 italic bold",
+        text="0 N",tags="e1")
+
+
+
+
 #ER2 Detail display
 testrec(tab1can,310,10,410,210,"blue","white")
 

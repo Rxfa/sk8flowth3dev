@@ -4,7 +4,22 @@ from tkinter import messagebox
 from tkinter.ttk import *
 
 #from matplotlib.pyplot import text, title
+# import filedialog module
+from tkinter import filedialog
 
+# Function for opening the
+# file explorer window
+def browseFiles():
+	filename = filedialog.askopenfilename(initialdir = "./",
+										title = "Select a File",
+										filetypes = (("Text files",
+														"*.txt*"),
+													("all files",
+														"*.*")))
+	
+	# Change label contents
+	label_file_explorer.configure(text="File Opened: "+filename)
+	
 
 #default size 12, Times,italic/bold
 def testtxt(canvas,x,y,s,fill_,text_):
@@ -24,13 +39,16 @@ def testcir(canvas,x,y,r1,r2,fill_): # x,y, r1,r2
     )
 def testme():
     url = f"{e.get()}"
-    t = requests.get(url)
+    lines = ["/","a1c43my"]
+    for line in lines:
 
-    if t.status_code == 200: 
-        la2.config(text=f"{t.headers}")
-        la2.after(100,testme)
-        myLabel = Label(inner_win2,text=f"CMD SENT: ACTIAVTE {e.get()}")
-        myLabel2 = Label(tab1can,text=f"CMD SENT: ACTIAVTE {e.get()}")
+        t = requests.get(f"{url}/{line}")
+ 
+    la2.config(text=f"{t.headers}")
+    la2.after(150,testme)
+    myLabel2 = Label(tab1can,text=f"SENT: {e.get()}")
+    myLabel2.pack()
+
 
 
 main_win = Tk()
@@ -78,4 +96,27 @@ e = Entry(tab1can,width=40)
 e.pack()
 cmd_ = Button(tab1can, text="CMD" ,command=testme)
 cmd_.pack()
+
+label_file_explorer = Label(tab2can,
+							text = "File Explorer using Tkinter",
+							width = 100)
+
+	
+button_explore = Button(tab2can,
+						text = "Browse Files",
+						command = browseFiles)
+
+button_exit = Button(tab2can,
+					text = "Exit",
+					command = exit)
+
+# Grid method is chosen for placing
+# the widgets at respective positions
+# in a table like structure by
+# specifying rows and columns
+label_file_explorer.grid(column = 1, row = 1)
+
+button_explore.grid(column = 1, row = 2)
+
+button_exit.grid(column = 1,row = 3)
 main_win.mainloop()
