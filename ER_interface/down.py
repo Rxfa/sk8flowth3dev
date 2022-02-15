@@ -8,7 +8,7 @@ from tkinter import messagebox as m_box
 import re
 
 win = Tk()
-win.title("PDF Downloader")
+win.title("Py| PDF Downloader")
 win.geometry("500x360")
 win.minsize(500,360)
 win.maxsize(500,360)
@@ -26,7 +26,7 @@ file_name = ttk.Entry(frame, width=50, textvariable=filename)
 file_name.grid(row=3, columnspan=4, padx=2, pady=3)
 
 def onClick():
-    os.chdir(r"C:\Users\sk8fl\Downloads")
+    os.chdir(r"C:\\Users\\sk8fl\\Downloads")
     file_url = url.get()
     file_name_aft_click = filename.get()
     if re.search(".pdf|py", file_url):
