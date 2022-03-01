@@ -2,7 +2,7 @@ import subprocess,socket,os
 import time
 # Enter IP and Port here
 HOST = '127.0.0.1'
-PORT = 44
+PORT = 4420
 # Configure socket connection
 z = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 z.bind((HOST, PORT))
