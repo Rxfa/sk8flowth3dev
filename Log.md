@@ -73,3 +73,10 @@ I finished the CSS part of the Responsive Web Design path. Definitly learned alo
 **Today's Progress**: working on tkinter and how to use it with current projects ( if applicable). 
 
 **Thoughts**: This was a task. The challenge was pacing and working piece by piece. It is easy to get excited and amazed with features. Without a use case i find myself just mixing up functions for fun so lately the "use case" is learning. 
+
+
+### R1D52
+
+**Today's Progress**: I have used tkiner for some things and it will be back once i finish some threding and Queue concepts in newER. I have some things in the fun stuff folder that are interesting to say the least. I hosted some of the POCs on my linode server to test out the python scripts in thr venom folder. I have been busy with work and studying for the Sec/Pentest +.  The projects i have bounce around as i need to tailor needs for pentesting ideas. The fuzzer was useful, port scanner, md5 cracker and learning to use impacket.
+
+**Thoughts**: I have tried to stay with doing something everyday. Its not so hard but i do need to balance out things. I dont want to burn out.... more projects coming. 
