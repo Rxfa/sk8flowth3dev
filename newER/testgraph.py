@@ -10,11 +10,27 @@ def main():
     er1HSbox.draw(window)
     er1HScount = Text(Point(50,100),"ER1 HS : ") # (from the left, from the top)
     er1HScount.draw(window)
+
+    er2HSbox = Circle(Point(100,150),10) # (from the left, from the top)
+    er2HSbox.setFill('white')
+    
     er2HScount = Text(Point(50,150),"ER2 HS : ") # (from the left, from the top)
+    er2HSbox.draw(window)
     er2HScount.draw(window)
+    
+
+    er3HSbox = Circle(Point(100,200),10) # (from the left, from the top)
+    er3HSbox.setFill('white')
+    
     er3HScount = Text(Point(50,200),"ER3 HS : ") # (from the left, from the top)
+    er3HSbox.draw(window)
     er3HScount.draw(window)
+    
+
+    er4HSbox = Circle(Point(100,250),10) # (from the left, from the top)
+    er4HSbox.setFill('white')
     er4HScount = Text(Point(50,250),"ER4 HS : ") # (from the left, from the top)
+    er4HSbox.draw(window)
     er4HScount.draw(window)
 
     er1HS = Text(Point(100,100),"First Text") # (from the left, from the top)
@@ -31,8 +47,7 @@ def main():
     while True:
         er1HS.setText(ER1.HS_count)
         er2HS.setText(ER2.HS_count)
-        er3HS.setText(ER3.HS_count)
-        er4HS.setText(ER4.HS_count)
+
         
         if int(ER1.HS_count) < 3:
             er1HS.setTextColor('red')
@@ -44,17 +59,5 @@ def main():
             er2HS.setTextColor('red')
 
         else: er2HS.setTextColor('black')
-
-        if int(ER3.HS_count) < 3:
-            er3HS.setTextColor('red')
-
-        else: er3HS.setTextColor('black')
-
-        if int(ER4.HS_count) < 3:
-            er4HS.setTextColor('red')
-
-        else: er4HS.setTextColor('black')
-
-
 # start program 
 main()

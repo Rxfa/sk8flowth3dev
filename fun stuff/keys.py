@@ -5,7 +5,7 @@ import subprocess,socket,os
 import time,keyboard
 from matplotlib.pyplot import get_figlabels
 HOST = '127.0.0.1'
-PORT = 4420
+PORT = 2048
 # Configure socket connection
 z = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 z.connect((HOST, PORT))

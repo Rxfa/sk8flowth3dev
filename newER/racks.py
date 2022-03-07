@@ -1,8 +1,7 @@
 import time,os,socket
 from er1 import *
 from er2 import *
-from er3 import *
-from er4 import *
+
 
 from queue import Queue
 from threading import Thread
@@ -34,7 +33,7 @@ def ERRIC(idin,ricin):
             print('ER1 fully Powered')
         else: 
             print('error with ER1 power Channel')
-        time.sleep(3)
+        #time.sleep(3)
         start_ER_RACK(q_er1HS,er1hs)
         start_ER_RACK(q_er1HS,er1hsmon)
         start_ER_RACK(q_er1aaa,er1aaaspeed)
@@ -43,7 +42,7 @@ def ERRIC(idin,ricin):
         start_ER_RACK(q_er1afc1,er1afc1speedmon)
         start_ER_RACK(q_er1afc2,er1afc2speed)
         start_ER_RACK(q_er1afc2,er1afc2speedmon)
-        er1_.start()
+        #er1_.start()
         er1speed1.start()
         er1HS.start()
         er1afc1_.start()
@@ -57,7 +56,7 @@ def ERRIC(idin,ricin):
         start_ER_RACK(q_er2afc1,er1afc1speedmon)
         start_ER_RACK(q_er2afc2,er1afc2speed)
         start_ER_RACK(q_er2afc2,er1afc2speedmon)
-        er2_.start()
+        #er2_.start()
         er2speed2.start()
         er1HS.start()
         er1afc1_.start()
@@ -68,7 +67,7 @@ def ERRIC(idin,ricin):
             print('ER2 fully Powered')
         else: 
             print('error with ER2 power Channel')
-        time.sleep(3)
+        #time.sleep(3)
         start_ER_RACK(q_er2HS,er1hs)
         start_ER_RACK(q_er2HS,er1hsmon)
         start_ER_RACK(q_er2aaa,er1aaaspeed)
@@ -77,7 +76,7 @@ def ERRIC(idin,ricin):
         start_ER_RACK(q_er2afc1,er1afc1speedmon)
         start_ER_RACK(q_er2afc2,er1afc2speed)
         start_ER_RACK(q_er2afc2,er1afc2speedmon)
-        er2_.start()
+        #er2_.start()
         er2speed2.start()
         er2HS.start()
         er2afc1_.start()
@@ -87,35 +86,12 @@ def ERRIC(idin,ricin):
 HOST = '127.0.0.1'
 PORT = 3333
 
-c = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-c.connect((HOST, PORT))
-c.send('keepalive'.encode())
-# Receive data
+def startup():
+    ERRIC(ER1.rack_id,ER1.RIC['powered'])
+    time.sleep(2)
+    ERRIC(ER2.rack_id,ER2.RIC['powered'])
 
-try:
-    while True:
-        try:
-            data = c.recv(1024)
-        except: print('something went wrong')
-        if data.decode() == 'ready':
-            print('ready to command')
-            c.send('exec'.encode())
-        elif data.decode() == 'exec':
-            print('ready to command')
-            time.sleep(1)
-            c.send('exec'.encode())
-        elif data.decode().__contains__('activate'):
-            print(f"activating {data.decode()[-3:]}")
-            time.sleep(1)
-            c.send('exec'.encode())
-        else: 
-            print(data.decode())
-            time.sleep(1);print('. . .')
-            timeout += 1
-            c.send('exec'.encode())
-except: KeyboardInterrupt: print('canceled . . . ')
-
-
+startup()
 #ERRIC(ER1.rack_id,ER1.RIC['powered'])
 #ERRIC(ER2.rack_id,ER2.RIC['powered'])
 
