@@ -1,9 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\day2",
     "\\ER_interface"
   ],
-  "SelectedNode": "\\day2\\day2.py",
+  "SelectedNode": "\\ER_interface\\interface.py",
   "PreviewInSolutionExplorer": false
 }
